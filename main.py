@@ -118,6 +118,7 @@ async def account_login(bot: Client, m: Message):
 
     raw_text6 = "no"
     thumb = "no"
+    res = "NA"
 
     if raw_text == '0':
         count = 1
