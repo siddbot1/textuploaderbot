@@ -1,7 +1,7 @@
 import time
 import math
 import os
-from kuka_n import hrb,hrt
+from Easy_F import hrb,hrt
 from pyrogram.errors import FloodWait
 from datetime import datetime,timedelta
 
