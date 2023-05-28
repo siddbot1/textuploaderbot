@@ -119,6 +119,14 @@ async def account_login(bot: Client, m: Message):
     raw_text6 = "no"
     thumb = "no"
     res = "NA"
+    qualityA=854
+    qualityB=480
+    qualityC=1280
+    qualityD=720
+    qualityE=360
+    qualityF=320
+    qualityH=240
+    qualityI=144
 
     if raw_text == '0':
         count = 1
@@ -131,11 +139,7 @@ async def account_login(bot: Client, m: Message):
             url = links[i][1]
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*","").replace("download",".pdf").replace(".","").strip()
             name = f'{str(count).zfill(3)}) {name1}'    
-            print("❤") 
 
-
-            
-          
             if "acecwply" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
             if "youtu" in url:
@@ -145,7 +149,9 @@ async def account_login(bot: Client, m: Message):
             	params = (('url', f'{url}'),)
             	response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
             	url = response.json()['url']
-            	cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv "{url}"'
+            	#cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv "{url}"'
+            	#cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv --format "bestvideo[height<=720]+bestaudio/best[height<=480]+bestaudio/best[height<=320]+bestaudio" "{url}"'
+            	cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv --format "bestvideo[height<={raw_text2}]+bestaudio/best[height<={qualityA}]+bestaudio/best[height<={qualityB}]+bestaudio/best[height<={qualityC}]+bestaudio/best[height<={qualityD}]+bestaudio/best[height<={qualityE}]+bestaudio/best[height<={qualityF}]+bestaudio/best[height<={qualityG}]+bestaudio/best[height<={qualityH}]+bestaudio/best[height<={qualityI}]+bestaudio" "{url}"'
             elif "player.vimeo" in url:
                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             elif "m3u8" or "livestream" in url:
@@ -160,16 +166,16 @@ async def account_login(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --hls-prefer-ffmpeg --no-keep-video --no-check-certificate --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             print(cmd)
-            print("❤❤❤") 
+            
             try:
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2}`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
                 cc = f'{str(count).zfill(3)}**.** {name1} {res}\n**Batch :-** {raw_text0}'
                 cc1 = f'{str(count).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
-                print("❤❤❤❤") 
+                
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
-                        print("❤❤❤❤❤") 
+                        
                         ka = await helper.aio(url, name)
                         await prog.delete(True)
                         time.sleep(1)
@@ -192,7 +198,7 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    print("❤❤❤❤❤❤") 
+                    
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await helper.send_vid(bot, m, cc, filename, thumb, name,
@@ -205,20 +211,18 @@ async def account_login(bot: Client, m: Message):
                     f"**downloading failed ❌**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
                 continue
-                print("❤❤❤❤❤❤❤") 
+                
 
     except Exception as e:
         await m.reply_text(e)
-        print("⚽⚽⚽⚽⚽⚽⚽") 
     await m.reply_text("Done")
-    print("❤😡😡😡") 
+    
     
 
 
     
     
 bot.run()    
-
 
 
 
