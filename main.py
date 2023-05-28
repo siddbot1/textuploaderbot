@@ -114,7 +114,7 @@ async def account_login(bot: Client, m: Message):
 
     await m.reply_text("**Enter Resolution Quality**🥊")
     input2: Message = await bot.listen(editable.chat.id)
-    raw_text2 = input2
+    raw_text2 = input2.text
     raw_text6 = "no"
     thumb = "no"
     res = "NA"
