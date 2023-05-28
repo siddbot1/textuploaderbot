@@ -23,15 +23,11 @@ import sys
 from get_video_info import get_video_attributes, get_video_thumb
 import re
 from pyrogram import Client as bot
-DEF_FORMAT = "480"
+#DEF_FORMAT = "480"
 from dotenv import load_dotenv
 load_dotenv()
 os.makedirs("./downloads", exist_ok=True)
-API_ID = 952608
-API_HASH = "8d8d0ad8e3d4bcd54420190f57da78ad"
-BOT_TOKEN = "6144745485:AAFFSe33wLuWwKAWMkau8mYopgJT0OoOCmE"
-AUTH_USERS = 818269274
-sudo_users = [818269274]
+
 bot = Client(
     "bot",
     bot_token=BOT_TOKEN,
@@ -112,10 +108,9 @@ async def account_login(bot: Client, m: Message):
     input0: Message = await bot.listen(editable.chat.id)
     raw_text0 = input0.text
 
-    await m.reply_text("**Enter Resolution Quality**🥊")
-    input2: Message = await bot.listen(editable.chat.id)
-    raw_text2 = input2.text
-
+    #await m.reply_text("**Enter Resolution Quality**🥊")
+    #input2: Message = await bot.listen(editable.chat.id)
+    raw_text2 = "720"
     raw_text6 = "no"
     thumb = "no"
     res = "NA"
@@ -125,8 +120,8 @@ async def account_login(bot: Client, m: Message):
     qualityD=720
     qualityE=360
     qualityF=320
-    qualityG=240
-    qualityH=144
+    qualityH=240
+    qualityI=144
 
     if raw_text == '0':
         count = 1
@@ -149,9 +144,9 @@ async def account_login(bot: Client, m: Message):
             	params = (('url', f'{url}'),)
             	response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
             	url = response.json()['url']
-            	#cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv "{url}"'
+            	cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv "{url}"'
             	#cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv --format "bestvideo[height<=720]+bestaudio/best[height<=480]+bestaudio/best[height<=320]+bestaudio" "{url}"'
-            	cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv --format "bestvideo[height<={raw_text2}]+bestaudio/best[height<={qualityA}]+bestaudio/best[height<={qualityB}]+bestaudio/best[height<={qualityC}]+bestaudio/best[height<={qualityD}]+bestaudio/best[height<={qualityE}]+bestaudio/best[height<={qualityF}]+bestaudio/best[height<={qualityG}]+bestaudio/best[height<={qualityH}]+bestaudio" "{url}"'
+            	#cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv --format "bestvideo[height<={raw_text2}]+bestaudio/best[height<={qualityA}]+bestaudio/best[height<={qualityB}]+bestaudio/best[height<={qualityC}]+bestaudio/best[height<={qualityD}]+bestaudio/best[height<={qualityE}]+bestaudio/best[height<={qualityF}]+bestaudio/best[height<={qualityG}]+bestaudio/best[height<={qualityH}]+bestaudio/best[height<={qualityI}]+bestaudio" "{url}"'
             elif "player.vimeo" in url:
                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             elif "m3u8" or "livestream" in url:
@@ -165,7 +160,6 @@ async def account_login(bot: Client, m: Message):
                 cmd = "pdf"
             else:
                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --hls-prefer-ffmpeg --no-keep-video --no-check-certificate --remux-video mkv "{url}" -o "{name}.%(ext)s"'
-            print(" 💔💔") 
             print(cmd)
             
             try:
