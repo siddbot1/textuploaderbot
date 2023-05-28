@@ -149,7 +149,8 @@ async def account_login(bot: Client, m: Message):
             	params = (('url', f'{url}'),)
             	response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
             	url = response.json()['url']
-                cmd = f'yt-dlp -f "bestvideo[height=720,width=406]+bestaudio" -o "{name}.%(ext)s" --no-keep-video --remux-video mkv "{url}"'
+                cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv --format 160 "{url}"'
+
 #            	cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv "{url}"'
             	#cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv --format "bestvideo[height<=720]+bestaudio/best[height<=480]+bestaudio/best[height<=320]+bestaudio" "{url}"'
             	#cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv --format "bestvideo[height<={raw_text2}]+bestaudio/best[height<={qualityA}]+bestaudio/best[height<={qualityB}]+bestaudio/best[height<={qualityC}]+bestaudio/best[height<={qualityD}]+bestaudio/best[height<={qualityE}]+bestaudio/best[height<={qualityF}]+bestaudio/best[height<={qualityG}]+bestaudio/best[height<={qualityH}]+bestaudio/best[height<={qualityI}]+bestaudio" "{url}"'
