@@ -112,9 +112,9 @@ async def account_login(bot: Client, m: Message):
     input0: Message = await bot.listen(editable.chat.id)
     raw_text0 = input0.text
 
-    #await m.reply_text("**Enter Resolution Quality**🥊")
-    #input2: Message = await bot.listen(editable.chat.id)
-    raw_text2 = "720"
+    await m.reply_text("**Enter Resolution Quality**🥊")
+    input2: Message = await bot.listen(editable.chat.id)
+    raw_text2 = input2
     raw_text6 = "no"
     thumb = "no"
     res = "NA"
@@ -148,7 +148,7 @@ async def account_login(bot: Client, m: Message):
             	params = (('url', f'{url}'),)
             	response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
             	url = response.json()['url']
-            	cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<=180]+bestaudio/best[height<=180]" --no-keep-video --remux-video mkv "{url}"'
+            	cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio/best[height<={raw_text2}]" --no-keep-video --remux-video mkv "{url}"'
             	#cmd = f'yt-dlp -o "{name}.%(ext)s" --no-keep-video --remux-video mkv "{url}"'
             elif "player.vimeo" in url:
                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --no-keep-video --remux-video mkv "{url}" -o "{name}.%(ext)s"'
