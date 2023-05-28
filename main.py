@@ -178,9 +178,9 @@ async def account_login(bot: Client, m: Message):
                         
                         ka = await helper.aio(url, name)
                         await prog.delete(True)
-                        time.sleep(1)
+                        time.sleep(0.5)
                         reply = await m.reply_text(f"Uploading - ```{name}```")
-                        time.sleep(1)
+                        time.sleep(0.5)
                         start_time = time.time()
                         await m.reply_document(
                             ka,
@@ -190,9 +190,9 @@ async def account_login(bot: Client, m: Message):
                         count += 1
                         # time.sleep(1)
                         await reply.delete(True)
-                        time.sleep(1)
+                        time.sleep(0.5)
                         os.remove(ka)
-                        time.sleep(3)
+                        time.sleep(0.5)
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
@@ -204,7 +204,7 @@ async def account_login(bot: Client, m: Message):
                     await helper.send_vid(bot, m, cc, filename, thumb, name,
                                           prog)
                     count += 1
-                    time.sleep(1)
+                    time.sleep(0.5)
 
             except Exception as e:
                 await m.reply_text(
