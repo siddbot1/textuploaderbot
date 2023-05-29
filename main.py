@@ -179,20 +179,21 @@ async def account_login(bot: Client, m: Message):
             print(cmd)
             output = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
 
-            # Read the output line by line
-            for line in output.stdout:
-                if 'ETA' in line:
-                    # Extract the ETA value from the output
-                    eta = line.split('ETA')[1].strip()
-                    print(eta) 
-
+            
             
             try:
                 Show = f"**Downloading:-**\n\n**Name :-** `{name}\nQuality - {raw_text2} (If It Not Avvailable then Automatically Download Best Quality`\n\n**Url :-** `{url}`"
                 prog = await m.reply_text(Show)
+       
                 cc = f'{str(count).zfill(3)}**.** {name1} {res}\n**Batch :-** {raw_text0}'
                 cc1 = f'{str(count).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
-                
+                # Read the output line by line
+                for line in output.stdout:
+                    if 'ETA' in line:
+                       # Extract the ETA value from the output
+                       eta = line.split('ETA')[1].strip()
+                       print(eta) 
+                print("❤❤") 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
                         
