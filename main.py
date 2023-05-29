@@ -191,7 +191,7 @@ async def account_login(bot: Client, m: Message):
                 cc1 = f'{str(count).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
                 # Read the output line by line
                 editable = await m.reply_text("Check\n**ETA:** {eta}")
-                new_text = f"Loading...\n**ETA:** `{eta}`"
+                #new_text = f"Loading...\n**ETA:** `{eta}`"
 
 
                 for line in output.stdout:
@@ -204,7 +204,7 @@ async def account_login(bot: Client, m: Message):
                        #editable = await m.reply_text("Check\n**ETA:** {eta}")
 
                        # Modify the message text with the updated information
-                       
+                       new_text = f"Loading...\n**ETA:** `{eta}`"
                        # Edit the existing message with the modified text
                        await editable.edit_text(new_text)
 
