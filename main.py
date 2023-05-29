@@ -194,7 +194,7 @@ async def account_login(bot: Client, m: Message):
                        # Extract the ETA value from the output
                        eta = line.split('ETA')[1].strip()
                        #print(eta) 
-                       prog = await m.edit_text(Show)
+                       prog = await m.reply.edit_text(Show)
                 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
