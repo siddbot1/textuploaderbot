@@ -212,7 +212,7 @@ async def account_login(bot: Client, m: Message):
                             caption=
                             f'**Title »** {name1} {res}.pdf\n**Caption »** {raw_text0}\n**Index »** {str(count).zfill(3)}'
                         )
-                        count += 
+                        count +=1
                         # time.sleep(1)
                         await reply.delete(True)
                         time.sleep(0.5)
