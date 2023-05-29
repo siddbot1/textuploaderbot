@@ -200,6 +200,7 @@ async def account_login(bot: Client, m: Message):
                        
                        new_text = f"Loading...\n**ETA:** `{eta}`"
                        await editable1.edit_text(new_text)
+                       print(eta) 
                        #await editable.delete(True)
                 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
