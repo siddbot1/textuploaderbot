@@ -196,7 +196,7 @@ async def account_login(bot: Client, m: Message):
                        #print(eta) 
                        #prog = await editable.edit(Show)
                        editable = await m.reply_text("Check \n**ETA:** {eta}")
-                       await editable.edit("Done \n**ETA:** `{url}`")
+                       await editable.edit(f"Done \n**ETA:** `{url}`")
                        print(eta) 
                 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
