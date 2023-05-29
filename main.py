@@ -178,7 +178,7 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --hls-prefer-ffmpeg --no-keep-video --no-check-certificate --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             print(cmd)
             output = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
-            #eta="0"
+            
 
             
 
@@ -194,10 +194,11 @@ async def account_login(bot: Client, m: Message):
                        # Extract the ETA value from the output
                        eta = line.split('ETA')[1].strip()
                        #print(eta) 
-                       #prog = await editable.edit(Show)
+
                        editable = await m.reply_text("Check \n**ETA:** {eta}")
-                       await editable.edit(f"Done \n**ETA:** `{url}`")
+                       await editable.edit(f"Loading....\n**ETA:** `{eta}`")
                        print(eta) 
+                       await editable.delete(True)
                 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
