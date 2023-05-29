@@ -185,7 +185,7 @@ async def account_login(bot: Client, m: Message):
             
             try:
                 Show = f"**Downloading:-**\n\n**Name:** `{name}`\n**Quality:** {raw_text2} (If It's Not Available, Automatically Download Best Quality)\n**URL:** `{url}`\n**ETA:** {eta}"
-                #prog = await m.reply_text(Show)
+                prog = await m.reply_text(Show)
                 cc = f'{str(count).zfill(3)}**.** {name1} {res}\n**Batch :-** {raw_text0}'
                 cc1 = f'{str(count).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
                 # Read the output line by line
@@ -194,7 +194,9 @@ async def account_login(bot: Client, m: Message):
                        # Extract the ETA value from the output
                        eta = line.split('ETA')[1].strip()
                        #print(eta) 
-                       prog = await editable.edit(Show)
+                       #prog = await editable.edit(Show)
+                       editable = await m.reply_text("Check \n**ETA:** {eta}")
+                       await editable.edit("Done \n**ETA:** {eta}")
                 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
@@ -210,7 +212,7 @@ async def account_login(bot: Client, m: Message):
                             caption=
                             f'**Title »** {name1} {res}.pdf\n**Caption »** {raw_text0}\n**Index »** {str(count).zfill(3)}'
                         )
-                        count += 1
+                        count += 
                         # time.sleep(1)
                         await reply.delete(True)
                         time.sleep(0.5)
