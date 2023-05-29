@@ -182,9 +182,9 @@ async def account_login(bot: Client, m: Message):
             # Read the output line by line
             for line in output.stdout:
                 if 'ETA' in line:
-                # Extract the ETA value from the output
-                eta = line.split('ETA')[1].strip()
-                print(eta) 
+                    # Extract the ETA value from the output
+                    eta = line.split('ETA')[1].strip()
+                    print(eta) 
 
             
             try:
