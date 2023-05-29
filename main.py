@@ -194,11 +194,21 @@ async def account_login(bot: Client, m: Message):
                        # Extract the ETA value from the output
                        eta = line.split('ETA')[1].strip()
                        #print(eta) 
+                       # Assuming `m` is the message object or update received in your bot
+# Send the initial message
+                       editable = await m.reply_text("Check\n**ETA:** {eta}")
 
-                       editable = await m.reply_text("Check \n**ETA:** {eta}")
-                       await editable.edit(f"Loading....\n**ETA:** `{eta}`")
-                       print(eta) 
-                       await editable.delete(True)
+# Modify the message text with the updated information
+                       new_text = f"Loading...\n**ETA:** `{eta}`"
+
+# Edit the existing message with the modified text
+                       await editable.edit_text(new_text)
+
+
+                       #editable = await m.reply_text("Check \n**ETA:** {eta}")
+                       #await editable.edit(f"Loading....\n**ETA:** `{eta}`")
+                       #print(eta) 
+                       #await editable.delete(True)
                 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
