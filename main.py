@@ -178,13 +178,13 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}+bestaudio" --hls-prefer-ffmpeg --no-keep-video --no-check-certificate --remux-video mkv "{url}" -o "{name}.%(ext)s"'
             print(cmd)
             output = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
-            eta="0"
+            #eta="0"
 
             
 
             
             try:
-                Show = f"**Downloading:-**\n\n**Name:** `{name}`\n**Quality:** {raw_text2} (If It's Not Available, Automatically Download Best Quality)\n**URL:** `{url}`\n**ETA:** {eta}"
+                Show = f"**Downloading:-**\n\n**Name:** `{name}`\n**Quality:** {raw_text2} (If It's Not Available, Automatically Download Best Quality)\n**URL:** `{url}`"
                 prog = await m.reply_text(Show)
                 cc = f'{str(count).zfill(3)}**.** {name1} {res}\n**Batch :-** {raw_text0}'
                 cc1 = f'{str(count).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
@@ -196,7 +196,7 @@ async def account_login(bot: Client, m: Message):
                        #print(eta) 
                        #prog = await editable.edit(Show)
                        editable = await m.reply_text("Check \n**ETA:** {eta}")
-                       await editable.edit("Done \n**ETA:** {eta}")
+                       await editable.edit("Done \n**ETA:** `{url}`")
                        print(eta) 
                 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
