@@ -207,6 +207,9 @@ async def account_login(bot: Client, m: Message):
                        frag_current_str = eta[frag_start:frag_end]
                        frag_total_str = eta[frag_end + 1:]
                        #print(f"Extracted frag values: frag_current_str={frag_current_str}, frag_total_str={frag_total_str}")
+                       frag_current_str = ''.join(filter(str.isdigit, frag_current_str))
+                       frag_total_str = ''.join(filter(str.isdigit, frag_total_str))
+
 
 
                        try:
