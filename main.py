@@ -181,15 +181,15 @@ async def account_login(bot: Client, m: Message):
             output = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
             eta=0
             percentage_10_reached = False
-            percentage_20_reached = False
-            percentage_30_reached = False
-            percentage_40_reached = False
+            percentage_25_reached = False
             percentage_50_reached = False
-            percentage_60_reached = False
-            percentage_70_reached = False
-            percentage_80_reached = False
-            percentage_90_reached = False
+            percentage_75_reached = False
             percentage_100_reached = False
+            #percentage_60_reached = False
+            #percentage_70_reached = False
+            #percentage_80_reached = False
+            #percentage_90_reached = False
+            #percentage_100_reached = False
 
             
 
@@ -236,41 +236,23 @@ async def account_login(bot: Client, m: Message):
                                await editable1.edit("Downloading **10%**")
                                #print("10% reached! ❤")
                                percentage_10_reached = True
-                          if percentage >= 20 and not percentage_20_reached:
-                               #print("20% reached! ❤")
-                               await editable1.edit("Downloading **20%**")
-                               percentage_20_reached = True
-                          if percentage >= 30 and not percentage_30_reached:
-                               #print("30% reached! ❤")
-                               await editable1.edit("Downloading **30%**")
-                               percentage_30_reached = True
-                          if percentage >= 40 and not percentage_40_reached:
-                               #print("40% reached! ❤")
-                               await editable1.edit("Downloading **40%**")
-                               percentage_40_reached = True
+                          if percentage >= 25 and not percentage_25_reached:
+                               #print("25% reached! ❤")
+                               await editable1.edit("Downloading **25%**")
+                               percentage_25_reached = True
                           if percentage >= 50 and not percentage_50_reached:
                                #print("50% reached! ❤")
                                await editable1.edit("Downloading **50%**")
                                percentage_50_reached = True
-                          if percentage >= 60 and not percentage_60_reached:
-                               #print("60% reached! ❤")
-                               await editable1.edit("Downloading **60%**")
-                               percentage_60_reached = True
-                          if percentage >= 70 and not percentage_70_reached:
-                               #print("70% reached! ❤")
-                               await editable1.edit("Downloading **70%**")
-                               percentage_70_reached = True
-                          if percentage >= 80 and not percentage_80_reached:
-                               #print("80% reached! ❤")
-                               await editable1.edit("Downloading **80%**")
-                               percentage_80_reached = True
-                          if percentage >= 90 and not percentage_90_reached:
-                               #print("90% reached! ❤")
-                               percentage_90_reached = True
+                          if percentage >= 75 and not percentage_75_reached:
+                               #print("75% reached! ❤")
+                               await editable1.edit("Downloading **75%**")
+                               percentage_75_reached = True
                           if percentage >= 100 and not percentage_100_reached:
-                               #print("Completed! ❤")
+                               #print("100% reached! ❤")
                                await editable1.edit("Downloading **100%** Completed")
                                percentage_100_reached = True
+                          
                        except ValueError:
                              print("Invalid frag values in the ETA string.")
 
