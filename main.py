@@ -206,15 +206,17 @@ async def account_login(bot: Client, m: Message):
                        frag_end = eta.find("/", frag_start)
                        frag_current_str = eta[frag_start:frag_end]
                        frag_total_str = eta[frag_end + 1:]
-                       print(f"Extracted frag values: frag_current_str={frag_current_str}, frag_total_str={frag_total_str}")
+                       #print(f"Extracted frag values: frag_current_str={frag_current_str}, frag_total_str={frag_total_str}")
 
 
                        try:
-                          #frag_current = int(frag_current_str)
-                          #frag_total = int(frag_total_str)
+                          frag_current = int(frag_current_str)
+                          frag_total = int(frag_total_str)
+                          print(f"Extracted frag values: frag_current={frag_current}, frag_total={frag_total}")
+
 
                           # Calculate the percentage
-                          percentage = (frag_current_str / frag_total_str) * 100
+                          percentage = (frag_current / frag_total_str) * 100
 
                           # Check if the percentage reaches 10%
                           if percentage >= 10:
