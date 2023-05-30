@@ -180,6 +180,10 @@ async def account_login(bot: Client, m: Message):
             print(cmd)
             output = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
             eta=0
+            percentage_10_reached = False
+            percentage_20_reached = False
+            percentage_50_reached = False
+            percentage_100_reached = False
 
             
 
@@ -222,15 +226,18 @@ async def account_login(bot: Client, m: Message):
                           percentage = (frag_current / frag_total) * 100
 
                           # Check if the percentage reaches 10%
-                          if percentage == 1:
-                             print("10% reached! ❤")
-                          elif percentage == 3:
-                             print("20% reached! ❤")
-                          elif percentage >= 5:
-
-                             print("50% reached! ❤")
-                          elif percentage == 10:
-                             print("Completed! ❤")
+                          if percentage >= 10 and not percentage_10_reached:
+                               print("10% reached! ❤")
+                               percentage_10_reached = True
+                          if percentage >= 20 and not percentage_20_reached:
+                               print("20% reached! ❤")
+                               percentage_20_reached = True
+                          if percentage >= 50 and not percentage_50_reached:
+                               print("50% reached! ❤")
+                               percentage_50_reached = True
+                          if percentage >= 100 and not percentage_100_reached:
+                               print("Completed! ❤")
+                               percentage_100_reached = True
                        except ValueError:
                              print("Invalid frag values in the ETA string.")
 
