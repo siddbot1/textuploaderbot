@@ -226,7 +226,7 @@ async def account_login(bot: Client, m: Message):
                              print("10% reached! ❤")
                           elif percentage == 3:
                              print("20% reached! ❤")
-                          elif percentage == 5:
+                          elif percentage >= 5:
 
                              print("50% reached! ❤")
                           elif percentage == 10:
