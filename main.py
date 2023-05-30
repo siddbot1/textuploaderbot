@@ -190,7 +190,7 @@ async def account_login(bot: Client, m: Message):
             percentage_80_reached = False
             percentage_90_reached = False
             percentage_100_reached = False
-            
+            boom1 = "Downloading..."
             
 
             
