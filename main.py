@@ -222,11 +222,14 @@ async def account_login(bot: Client, m: Message):
                           percentage = (frag_current / frag_total) * 100
 
                           # Check if the percentage reaches 10%
-                          if percentage >= 10:
-                             print("10% reached!❤")
-
-                             #print(f"Current: {frag_current}/{frag_total}")
-                             #print(f"Percentage: {percentage}%")
+                          if percentage == 10:
+                             print("10% reached! ❤")
+                          elif percentage == 20:
+                             print("20% reached! ❤")
+                          elif percentage == 50:
+                             print("50% reached! ❤")
+                          elif percentage == 100:
+                             print("Completed! ❤")
                        except ValueError:
                              print("Invalid frag values in the ETA string.")
 
