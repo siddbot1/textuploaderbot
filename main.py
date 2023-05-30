@@ -219,7 +219,7 @@ async def account_login(bot: Client, m: Message):
 
 
                           # Calculate the percentage
-                          percentage = (frag_current / frag_total_str) * 100
+                          percentage = (frag_current / frag_total) * 100
 
                           # Check if the percentage reaches 10%
                           if percentage >= 10:
