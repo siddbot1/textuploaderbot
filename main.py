@@ -233,11 +233,6 @@ async def account_login(bot: Client, m: Message):
                           percentage = (frag_current / frag_total) * 100
                           
                             
-                          try:
-                             await reply.edit(f'`┌ 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 📈 -【 {percentage} 】\n`')
-               
-                          except FloodWait as e:
-                             time.sleep(e.x)
                           
                           # Check if the percentage reaches 10%
                           if percentage >= 10 and not percentage_10_reached:
