@@ -190,7 +190,7 @@ async def account_login(bot: Client, m: Message):
                 cc = f'{str(count).zfill(3)}**.** {name1} {res}\n**Batch :-** {raw_text0}'
                 cc1 = f'{str(count).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
                 # Read the output line by line
-                editable1 = await m.reply_text("Checking Download...}")
+                editable1 = await m.reply_text(f"Loading...\n**ETA:** `{eta}`")
 
 
                 for line in output.stdout:
@@ -199,9 +199,14 @@ async def account_login(bot: Client, m: Message):
                        eta = line.split('ETA')[1].strip()
                        
                        new_text = f"Loading...\n**ETA:** `{eta}`"
-                       await editable1.edit_text(new_text)
-                       print(eta) 
-                       #await editable.delete(True)
+                       #await editable1.edit_text(new_text)
+                       if editable1.text == new_text:
+                           print("np")  # Initial message is the same as the updated information
+                       else:
+                          # Edit the existing message with the modified text
+                           await editable1.edit_text(new_text)
+                           print(eta) 
+                           #await editable.delete(True)
                 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
