@@ -206,6 +206,8 @@ async def account_login(bot: Client, m: Message):
                        frag_end = eta.find("/", frag_start)
                        frag_current_str = eta[frag_start:frag_end]
                        frag_total_str = eta[frag_end + 1:]
+                       print(f"Extracted frag values: frag_current_str={frag_current_str}, frag_total_str={frag_total_str}")
+
 
                        try:
                           frag_current = int(frag_current_str)
