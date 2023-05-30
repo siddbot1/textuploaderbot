@@ -190,6 +190,9 @@ async def account_login(bot: Client, m: Message):
             percentage_80_reached = False
             percentage_90_reached = False
             percentage_100_reached = False
+            boom1 = "Downloading..."
+            prog1 = await m.reply_text(boom1+"**0%**")
+
 
             
 
@@ -231,9 +234,7 @@ async def account_login(bot: Client, m: Message):
 
                           # Calculate the percentage
                           percentage = (frag_current / frag_total) * 100
-                          boom1 = "Downloading..."
-                          prog1 = await m.reply_text(boom1+"**0%**")
-
+                          
                           # Check if the percentage reaches 10%
                           if percentage >= 10 and not percentage_10_reached:
                                await prog1.delete(True)
