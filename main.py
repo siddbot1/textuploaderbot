@@ -235,12 +235,12 @@ async def account_login(bot: Client, m: Message):
                           # Check if the percentage reaches 10%
                           if percentage >= 10 and not percentage_10_reached:
                                boom1 = "Downloading **10%**"
-                               prog1 = await m.reply_text(boom1)
+                               prog1 = await m.reply_text(boom1 + "❤")
                                percentage_10_reached = True
                           if percentage >= 20 and not percentage_20_reached:
                                await prog1.delete(True)
                                boom2 = "Downloading **20%**"
-                               prog2 = await m.reply_text(boom2)
+                               prog2 = await m.reply_text(boom2+"😡")
                                percentage_20_reached = True
                           if percentage >= 30 and not percentage_30_reached:
                                await prog2.delete(True)
