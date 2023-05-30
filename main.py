@@ -269,7 +269,7 @@ async def account_login(bot: Client, m: Message):
                                percentage_90_reached = True
                           if percentage >= 100 and not percentage_100_reached:
                                #print("Completed! ❤")
-                               await editable1.edit("Downloading **100%**" Completed)
+                               await editable1.edit("Downloading **100%** Completed")
                                percentage_100_reached = True
                        except ValueError:
                              print("Invalid frag values in the ETA string.")
