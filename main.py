@@ -150,7 +150,7 @@ async def account_login(bot: Client, m: Message):
         
     max_concurrent_threads = 5
     count = 0
-    
+    tasks = []
     
     async def process_link(link):
             print("❤") 
@@ -307,20 +307,16 @@ async def account_login(bot: Client, m: Message):
     print ("in Top ❤") 
     
     try:
-        print("in try ❤") 
         for i in range(arg, len(links)):
-            print("1") 
-            if len(asyncio.all_tasks()) >= max_concurrent_threads:
-                print ("2") 
-                await asyncio.gather(*asyncio.all_tasks())
-                print (" in if ❤") 
+            if len(tasks) >= max_concurrent_threads:
+                await asyncio.gather(*tasks)
+                tasks.clear()
 
             link = links[i]
-            await asyncio.to_thread(process_link, link)
-            print ("th ❤") 
-        print("extra❤") 
+            task = asyncio.create_task(process_link(link))
+            tasks.append(task)
 
-        await asyncio.gather(*asyncio.all_tasks())
+        await asyncio.gather(*tasks)
         await m.reply_text("Done")
 
     except Exception as e:
