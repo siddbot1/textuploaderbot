@@ -24,6 +24,7 @@ from get_video_info import get_video_attributes, get_video_thumb
 import re
 from pyrogram import Client as bot
 import concurrent.futures
+import tracemalloc
 
 
 from dotenv import load_dotenv
@@ -322,6 +323,7 @@ async def account_login(bot: Client, m: Message):
            await m.reply_text(str(e))
         await m.reply_text("Done")
 
+    tracemalloc.start()
     # Run the main function
     await main()
 
