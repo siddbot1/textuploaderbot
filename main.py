@@ -306,7 +306,8 @@ async def account_login(bot: Client, m: Message):
         with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
             futures = []
             for link in links:
-                futures.append(executor.submit(process_link, link))
+                # Await the process_link coroutine
+                futures.append(executor.submit(await process_link(link)))
 
             # Wait for all threads to complete
             for future in concurrent.futures.as_completed(futures):
