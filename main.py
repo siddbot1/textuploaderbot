@@ -301,8 +301,7 @@ async def account_login(bot: Client, m: Message):
                 await m.reply_text(
                     f"**Downloading Failed ❌**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
-                               
-   def process_links(links):
+  def process_links(links):
         with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
             futures = []
             for link in links:
