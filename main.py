@@ -151,7 +151,7 @@ async def account_login(bot: Client, m: Message):
     count = 0
     
     
-    def process_link(link):
+    async def process_link(link):
             #link = links[i]
             url = link[1]
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*","").replace("download",".pdf").replace(".","").strip()
