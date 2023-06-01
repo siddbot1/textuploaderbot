@@ -144,12 +144,13 @@ async def account_login(bot: Client, m: Message):
 
 
     if raw_text == '0':
-        count = 1
+        countn = 1
     else:
-        count = int(raw_text)
+        countn = int(raw_text)
         
     max_concurrent_threads = 2
     count = 1
+    countn = 1
     tasks = []
     
     async def process_link(link,count):
@@ -157,7 +158,7 @@ async def account_login(bot: Client, m: Message):
             #link = links[i]
             url = link[1]
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*","").replace("download",".pdf").replace(".","").strip()
-            name = f'{str(count).zfill(3)}) {name1}'    
+            name = f'{str(countn).zfill(3)}) {name1}'    
 
             if "acecwply" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
@@ -202,8 +203,8 @@ async def account_login(bot: Client, m: Message):
             try:
                 Show = f"**Downloading:-**\n\n**Name:** `{name}`\n**Quality:** **{raw_text2}p** (If It's Not Available, Automatically Download Best Quality)\n**URL:** `{url}`"
                 prog = await m.reply_text(Show)
-                cc = f'{str(count).zfill(3)}**.** {name1} {res}\n**Batch :-** {raw_text0}'
-                cc1 = f'{str(count).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
+                cc = f'{str(countn).zfill(3)}**.** {name1} {res}\n**Batch :-** {raw_text0}'
+                cc1 = f'{str(countn).zfill(3)}**.** {name1} {res}.pdf\n**Batch :-** {raw_text0}'
             
                 for line in output.stdout:
                     if 'ETA' in line:
@@ -276,9 +277,9 @@ async def account_login(bot: Client, m: Message):
                         await m.reply_document(
                             ka,
                             caption=
-                            f'**Title »** {name1} {res}.pdf\n**Caption »** {raw_text0}\n**Index »** {str(count).zfill(3)}'
+                            f'**Title »** {name1} {res}.pdf\n**Caption »** {raw_text0}\n**Index »** {str(countn).zfill(3)}'
                         )
-                        count +=1
+                        countn +=1
                         # time.sleep(1)
                         await reply.delete(True)
                         time.sleep(0.5)
@@ -294,7 +295,7 @@ async def account_login(bot: Client, m: Message):
                     filename = res_file
                     await helper.send_vid(bot, m, cc, filename, thumb, name,
                                           prog)
-                    count += 1
+                    countn += 1
                     return count
                     time.sleep(0.5)
 
