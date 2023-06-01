@@ -314,10 +314,10 @@ async def account_login(bot: Client, m: Message):
                 tasks.clear()
 
             link = links[i]
-            task = asyncio.create_task(process_link(link, count))  # Pass count parameter
+            task = asyncio.create_task(process_link(link))
             tasks.append(task)
 
-        count = await asyncio.gather(*tasks)
+        await asyncio.gather(*tasks)
         await m.reply_text("Done")
 
     except Exception as e:
