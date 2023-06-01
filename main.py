@@ -285,7 +285,7 @@ async def account_login(bot: Client, m: Message):
                     except FloodWait as e:
                         await m.reply_text(str(e))
                         time.sleep(e.x)
-                        continue
+                        
                 else:
                     
                     res_file = await helper.download_video(url, cmd, name)
@@ -299,7 +299,7 @@ async def account_login(bot: Client, m: Message):
                 await m.reply_text(
                     f"**Downloading Failed ❌**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
-                continue
+                return
                 
     threads = []
     
