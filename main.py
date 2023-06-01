@@ -301,18 +301,19 @@ async def account_login(bot: Client, m: Message):
                 await m.reply_text(
                     f"**Downloading Failed ❌**\n{str(e)}\n**Name** - {name}\n**Link** - `{url}`"
                 )
-  def process_links(links):
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-            futures = []
-            for link in links:
-                futures.append(executor.submit(process_link, link))
+   def process_links(links):
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        futures = []
+        for link in links:
+            futures.append(executor.submit(process_link, link))
 
-            # Wait for all threads to complete
+        # Wait for all threads to complete
         for future in concurrent.futures.as_completed(futures):
             try:
                 future.result()
             except Exception as e:
                 await m.reply_text(str(e))
+
 
    async def main():
         try:
