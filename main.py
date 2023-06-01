@@ -315,6 +315,7 @@ async def account_login(bot: Client, m: Message):
             link = links[i]
             task = asyncio.create_task(process_link(link))
             tasks.append(task)
+            count += 1
 
         await asyncio.gather(*tasks)
         await m.reply_text("Done")
