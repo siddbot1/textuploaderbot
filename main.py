@@ -154,6 +154,7 @@ async def account_login(bot: Client, m: Message):
     
     async def process_link(link, count):
             print("❤") 
+            nonlocal count 
             #link = links[i]
             url = link[1]
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*","").replace("download",".pdf").replace(".","").strip()
@@ -295,7 +296,7 @@ async def account_login(bot: Client, m: Message):
                     await helper.send_vid(bot, m, cc, filename, thumb, name,
                                           prog)
                     count += 1
-                    return count
+                    #return count
                     time.sleep(0.5)
 
             except Exception as e:
@@ -310,17 +311,17 @@ async def account_login(bot: Client, m: Message):
     try:
         for i in range(arg, len(links)):
             if len(tasks) >= max_concurrent_threads:
-                count = await asyncio.gather(*tasks)
+                await asyncio.gather(*tasks)
                 tasks.clear()
 
             link = links[i]
-            task = asyncio.create_task(process_link(link, count))  # Pass count parameter
+            task = asyncio.create_task(process_link(link))
             tasks.append(task)
 
         if tasks:
-            count = await asyncio.gather(*tasks)
+            await asyncio.gather(*tasks)
 
-        await m.reply_text("Done")
+        await m.reply_text(f"Processed {count} links")
 
     except Exception as e:
         await m.reply_text(str(e))
