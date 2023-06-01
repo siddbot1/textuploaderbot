@@ -309,7 +309,7 @@ async def account_login(bot: Client, m: Message):
                 )
                 continue
                 
-            t = threading.Thread(target=download_link, args=(link,))
+            t = threading.Thread(target=lambda:None)
             t.start()
             threads.append(t)
           
