@@ -322,6 +322,7 @@ async def account_login(bot: Client, m: Message):
             print ("6") 
             tasks.append(task)
             print ("7") 
+            count += 1
 
         print ("8") 
         if tasks:
