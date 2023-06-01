@@ -311,12 +311,12 @@ async def account_login(bot: Client, m: Message):
                    futures.append(executor.submit(await process_link(link, count)))
                    count += 1  # Increment count
 
-            # Wait for all threads to complete
-            for future in concurrent.futures.as_completed(futures):
-               try:
-                  future.result()
-               except Exception as e:
-                  await m.reply_text(str(e))
+               # Wait for all threads to complete
+               for future in concurrent.futures.as_completed(futures):
+                  try:
+                     future.result()
+                  except Exception as e:
+                     await m.reply_text(str(e))
 
 
     async def main():
