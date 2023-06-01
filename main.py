@@ -152,8 +152,12 @@ async def account_login(bot: Client, m: Message):
     count = 1
     tasks = []
     
-    async def process_link(link, count):
+    counter_lock = threading.Lock()
+    counter = 0
+    
+    async def process_link(link):
             print("start New❤") 
+            nonlocal counter_lock, counter
             #link = links[i]
             url = link[1]
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*","").replace("download",".pdf").replace(".","").strip()
@@ -294,8 +298,8 @@ async def account_login(bot: Client, m: Message):
                     filename = res_file
                     await helper.send_vid(bot, m, cc, filename, thumb, name,
                                           prog)
-                    count += 1
-                    return count
+                    with counter_lock:
+                        counter += 1
                     time.sleep(0.5)
 
             except Exception as e:
@@ -308,27 +312,20 @@ async def account_login(bot: Client, m: Message):
     print ("in Top ❤") 
     
     try:
-        print ("1") 
-        for i in range(arg, len(links)):
-            print ("2") 
+        count = 0  # Separate count variable
+        while count < len(links):
             if len(tasks) >= max_concurrent_threads:
-                count = await asyncio.gather(*tasks)
+                await asyncio.gather(*tasks)
                 tasks.clear()
-                print ("3") 
-            print ("4") 
-            link = links[i]
-            print ("5") 
-            task = asyncio.create_task(process_link(link, count))  # Pass count parameter
-            print ("6") 
-            tasks.append(task)
-            print ("7") 
-            count += 1
 
-        print ("8") 
+            link = links[count]
+            task = asyncio.create_task(process_link(link))
+            tasks.append(task)
+
+            count += 1  # Increment count
+
         if tasks:
-            print ("9") 
-            count = await asyncio.gather(*tasks)
-            print ("10") 
+            await asyncio.gather(*tasks)
 
         await m.reply_text("Done")
 
