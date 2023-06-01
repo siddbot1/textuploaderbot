@@ -149,7 +149,7 @@ async def account_login(bot: Client, m: Message):
         count = int(raw_text)
         
     max_concurrent_threads = 5
-    count = 0
+    count = 1
     tasks = []
     
     async def process_link(link,count):
