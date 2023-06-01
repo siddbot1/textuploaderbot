@@ -152,7 +152,7 @@ async def account_login(bot: Client, m: Message):
     count = 1
     tasks = []
     
-    async def process_link(link):
+    async def process_link(link, count):
             print("❤") 
             #link = links[i]
             url = link[1]
@@ -309,16 +309,16 @@ async def account_login(bot: Client, m: Message):
     
     try:
         for i in range(arg, len(links)):
-            link = links[i]
-            task = asyncio.create_task(process_link(link))
-            tasks.append(task)
-
             if len(tasks) >= max_concurrent_threads:
-                await asyncio.gather(*tasks)
+                count = await asyncio.gather(*tasks)
                 tasks.clear()
 
+            link = links[i]
+            task = asyncio.create_task(process_link(link, count))  # Pass count parameter
+            tasks.append(task)
+
         if tasks:
-            await asyncio.gather(*tasks)
+            count = await asyncio.gather(*tasks)
 
         await m.reply_text("Done")
 
