@@ -152,7 +152,7 @@ async def account_login(bot: Client, m: Message):
     count = 1
     tasks = []
     
-    async def process_link(link,count):
+    async def process_link(link):
             print("❤") 
             #link = links[i]
             url = link[1]
