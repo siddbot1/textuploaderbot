@@ -296,7 +296,7 @@ async def account_login(bot: Client, m: Message):
                     await helper.send_vid(bot, m, cc, filename, thumb, name,
                                           prog)
                     countn += 1
-                    return count
+                    return countn
                     time.sleep(0.5)
 
             except Exception as e:
