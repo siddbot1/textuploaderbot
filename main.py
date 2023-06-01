@@ -154,10 +154,9 @@ async def account_login(bot: Client, m: Message):
     
     async def process_link(link):
             global count
-        
-            url = links[i][1]
-            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*","").replace("download",".pdf").replace(".","").strip()
-            name = f'{str(count).zfill(3)}) {name1}'    
+            url = link[1]
+            name1 = link[0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace("download", ".pdf").replace(".", "").strip()
+            name = f'{str(count).zfill(3)}) {name1}'
 
             if "acecwply" in url:
                 cmd = f'yt-dlp -o "{name}.%(ext)s" -f "bestvideo[height<={raw_text2}]+bestaudio" --hls-prefer-ffmpeg --no-keep-video --remux-video mkv --no-warning "{url}"'
@@ -305,7 +304,8 @@ async def account_login(bot: Client, m: Message):
     async def process_links(links):
         with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
             futures = []
-            for link in links:
+            for i in range(len(links)):
+                link = links[i]
                 # Await the process_link coroutine
                 futures.append(executor.submit(await process_link(link)))
 
