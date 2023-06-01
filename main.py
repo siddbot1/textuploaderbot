@@ -309,7 +309,9 @@ async def account_login(bot: Client, m: Message):
     try:
         print("in try ❤") 
         for i in range(arg, len(links)):
+            print("1") 
             if len(asyncio.all_tasks()) >= max_concurrent_threads:
+                print ("2") 
                 await asyncio.gather(*asyncio.all_tasks())
                 print (" in if ❤") 
 
