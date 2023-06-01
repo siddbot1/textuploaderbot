@@ -152,7 +152,7 @@ async def account_login(bot: Client, m: Message):
     count = 0
     tasks = []
     
-    async def process_link(link):
+    async def process_link(link,count):
             print("❤") 
             #link = links[i]
             url = link[1]
@@ -295,6 +295,7 @@ async def account_login(bot: Client, m: Message):
                     await helper.send_vid(bot, m, cc, filename, thumb, name,
                                           prog)
                     count += 1
+                    return count
                     time.sleep(0.5)
 
             except Exception as e:
@@ -315,9 +316,9 @@ async def account_login(bot: Client, m: Message):
             link = links[i]
             task = asyncio.create_task(process_link(link))
             tasks.append(task)
-            count += 1
+            #count += 1
 
-        await asyncio.gather(*tasks)
+        count = await asyncio.gather(*tasks)
         await m.reply_text("Done")
 
     except Exception as e:
