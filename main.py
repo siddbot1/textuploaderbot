@@ -153,6 +153,7 @@ async def account_login(bot: Client, m: Message):
     
     
     async def process_link(link):
+            print("❤") 
             #link = links[i]
             url = link[1]
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*","").replace("download",".pdf").replace(".","").strip()
@@ -303,14 +304,19 @@ async def account_login(bot: Client, m: Message):
                 return
                 
     threads = []
+    print ("in Top ❤") 
     
     try:
+        print("in try ❤") 
         for i in range(arg, len(links)):
             if len(asyncio.all_tasks()) >= max_concurrent_threads:
                 await asyncio.gather(*asyncio.all_tasks())
+                print (" in if ❤") 
 
             link = links[i]
             await asyncio.to_thread(process_link, link)
+            print ("th ❤") 
+        print("extra❤") 
 
         await asyncio.gather(*asyncio.all_tasks())
         await m.reply_text("Done")
