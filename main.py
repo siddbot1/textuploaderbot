@@ -323,7 +323,7 @@ async def account_login(bot: Client, m: Message):
 
         if tasks:
             print ("4") 
-            count = await asyncio.gather(*tasks)
+            await asyncio.gather(*tasks)
             print ("5") 
 
         await m.reply_text("Done")
