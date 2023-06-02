@@ -148,7 +148,7 @@ async def account_login(bot: Client, m: Message):
     else:
         count = int(raw_text)
         
-    max_concurrent_threads = 2
+    max_concurrent_threads = 5
     count = 1
     tasks = []
     
