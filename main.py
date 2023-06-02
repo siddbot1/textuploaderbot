@@ -75,7 +75,7 @@ async def restart_handler(_, m):
     
     
     
-    
+count = 1
 @bot.on_message(filters.command(["cpd"]))
 async def account_login(bot: Client, m: Message):
     
@@ -149,7 +149,7 @@ async def account_login(bot: Client, m: Message):
         count = int(raw_text)
         
     max_concurrent_threads = 5
-    global count = 1
+    count = 1
     tasks = []
     
     async def process_link():
