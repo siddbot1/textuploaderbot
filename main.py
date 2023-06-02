@@ -155,7 +155,7 @@ async def account_login(bot: Client, m: Message):
     async def process_link(link, count):
             print("❤") 
             #link = links[i]
-            url = link[1]
+            url = links[i][1]
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/","").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*","").replace("download",".pdf").replace(".","").strip()
             name = f'{str(count).zfill(3)}) {name1}'    
 
@@ -314,7 +314,7 @@ async def account_login(bot: Client, m: Message):
                 tasks.clear()
                 print ("1") 
 
-            link = links[i][1]
+            link = links[i]
             print ("2") 
             task = asyncio.create_task(process_link(link, count))  # Pass count parameter
             count += 1
