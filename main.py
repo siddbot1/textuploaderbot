@@ -75,7 +75,7 @@ async def restart_handler(_, m):
     
     
     
-count = 1
+global count = 1
 @bot.on_message(filters.command(["cpd"]))
 async def account_login(bot: Client, m: Message):
     
