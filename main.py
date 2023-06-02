@@ -314,7 +314,7 @@ async def account_login(bot: Client, m: Message):
                 tasks.clear()
                 print ("1") 
 
-            link = links[i]
+            link = links[i][1]
             print ("2") 
             task = asyncio.create_task(process_link(link, count))  # Pass count parameter
             count += 1
