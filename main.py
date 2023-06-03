@@ -213,6 +213,9 @@ async def account_login(bot: Client, m: Message):
                 for line in iter(process.stdout.readline, b''):
                     output = line.decode('utf-8').strip()
                     if 'Downloading' in output:
+                        if ' ' not in output:
+                          # Skip lines without progress value
+                           continue
                         if progress_bar is None:
                             progress_bar = tqdm(total=100, desc='Downloading', unit='%', ncols=80)
                         try:
