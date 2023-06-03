@@ -184,8 +184,8 @@ async def account_login(bot: Client, m: Message):
            t.join()
 
     # Call the function to start downloading links using threads
-    download_links(links, arg, raw_text2, raw_text0)
-
+    
+    asyncio.run(download_links(links, arg, raw_text2, raw_text0))
     await m.reply_text("Done")
     
     
