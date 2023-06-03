@@ -204,11 +204,11 @@ async def account_login(bot: Client, m: Message):
                         print('Video already downloaded')
 
                     # Send progress update to the Telegram chat
-                    await message.reply_text(f"Downloading: {progress}%")
+                    await m.reply_text(f"Downloading: {progress}%")
 
                 print('Download completed')
                 # Send completion message to the Telegram chat
-                await message.reply_text(f"Dow💕💕💕: {progress}%")
+                await m.reply_text(f"Dow💕💕💕: {progress}%")
 
                 if cmd == "pdf" or ".pdf" in url or ".pdf" in name:
                     try:
