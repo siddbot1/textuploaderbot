@@ -215,11 +215,16 @@ async def account_login(bot: Client, m: Message):
                     if 'Downloading' in output:
                         if progress_bar is None:
                             progress_bar = tqdm(total=100, desc='Downloading', unit='%', ncols=80)
-                        progress = int(output.split()[1].strip('%'))
-                        progress_bar.n = progress
-                        progress_bar.refresh()
-                        # Send progress update to the Telegram chat
-                        context.bot.send_message(chat_id=CHAT_ID, text=f"Downloading: {progress}%")
+                        try:
+                            progress = int(output.split()[1].strip('%'))
+                            progress_bar.n = progress
+                            progress_bar.refresh()
+                            # Send progress update to the Telegram chat
+                            context.bot.send_message(chat_id=CHAT_ID, text=f"Downloading: {progress}%")
+                        except (ValueError, IndexError):
+                             # Handle the conversion error
+                             print('Invalid progress value:', output)
+                             continue
                     elif 'Deleting' in output:
                         if progress_bar is not None:
                             progress_bar.close()
