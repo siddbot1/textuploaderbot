@@ -1,8 +1,4 @@
-bot = Client(
-    "bot",
-    bot_token=os.environ.get("BOT_TOKEN"),
-    api_id=int(os.environ.get("API_ID")),
-    api_hash=os.environ.get("API_HASH"))import requests
+
 import json
 import subprocess
 from pyrogram.types.messages_and_media import message
