@@ -1,4 +1,8 @@
-import requests
+bot = Client(
+    "bot",
+    bot_token=os.environ.get("BOT_TOKEN"),
+    api_id=int(os.environ.get("API_ID")),
+    api_hash=os.environ.get("API_HASH"))import requests
 import json
 import subprocess
 from pyrogram.types.messages_and_media import message
@@ -27,18 +31,17 @@ from pyrogram import Client as bot
 from dotenv import load_dotenv
 load_dotenv()
 os.makedirs("./downloads", exist_ok=True)
-API_ID = 952608
-API_HASH = "8d8d0ad8e3d4bcd54420190f57da78ad"
-BOT_TOKEN = "6170442028:AAFjZE4YhF1JksQXKNsOuHhxmS2ayeZhuqE"
+API_ID = 25218337
+API_HASH = "0984be1572879b9dabb10882fb46a539"
+BOT_TOKEN = "6781759901:AAGsnJBIPrzSGrPlO5btGCSEKsNNzulMIBg"
 
-AUTH_USERS = 818269274
-sudo_users = [818269274]
+AUTH_USERS = 5732659152
+sudo_users = [5732659152]
 bot = Client(
     "bot",
-    bot_token=BOT_TOKEN,
-    api_id=API_ID,
-    api_hash=API_HASH
-)
+    bot_token=os.environ.get("BOT_TOKEN"),
+    api_id=int(os.environ.get("API_ID")),
+    api_hash=os.environ.get("API_HASH"))
 async def exec(cmd):
   proc = await asyncio.create_subprocess_exec(*cmd,
         stdout=asyncio.subprocess.PIPE,
