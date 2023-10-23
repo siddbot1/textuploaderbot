@@ -23,7 +23,7 @@ import sys
 from get_video_info import get_video_attributes, get_video_thumb
 import re
 from pyrogram import Client as bot
-
+import requests
 from dotenv import load_dotenv
 load_dotenv()
 os.makedirs("./downloads", exist_ok=True)
