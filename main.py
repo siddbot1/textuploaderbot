@@ -27,11 +27,17 @@ import requests
 from dotenv import load_dotenv
 load_dotenv()
 os.makedirs("./downloads", exist_ok=True)
+API_ID = 25218337
+API_HASH = "0984be1572879b9dabb10882fb46a539"
+BOT_TOKEN = "6697904876:AAHV5THX4yTtAtnEY06tqjsTZZdQJ2nMwKY"
+AUTH_USERS = 5732659152
+sudo_users = [5732659152]
 bot = Client(
     "bot",
-    bot_token=os.environ.get("BOT_TOKEN"),
-    api_id=int(os.environ.get("API_ID")),
-    api_hash=os.environ.get("API_HASH"))
+    bot_token=BOT_TOKEN,
+    api_id=API_ID,
+    api_hash=API_HASH
+)
 async def exec(cmd):
   proc = await asyncio.create_subprocess_exec(*cmd,
         stdout=asyncio.subprocess.PIPE,
